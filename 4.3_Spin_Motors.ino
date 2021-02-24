@@ -30,7 +30,15 @@ void setup() {
 void loop() {
 
   aWrite9  =  desiredPulseWidth9  / 8;              // Convert value written to analogWrite to pulse width
-  aWrite10 =  desiredPulseWidth10 / 8;
+  aWrite10 =  desiredPulseWidth10 / 8; 
+
+  if (aWrite9 > 255) { 
+    aWrite9 = 255;                                  // makes sure that aWrite9 and 10 are between 0-255
+  } 
+
+  if (aWrite10 > 255) { 
+    aWrite10 = 255;
+  }
   
   analogWrite(motorVoltagePin9,aWrite9);            // Use analogWrite to supply PWM signal of desired width  
   analogWrite(motorVoltagePin10,aWrite10);                                                  
