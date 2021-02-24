@@ -1,15 +1,14 @@
 #!/usr/bin/env python
-"""Exercises for SEED Lab Assignment 2.
+"""Mini-Project for SEED Lab: Group 007.
 
-Requires install of numpy, picamera, time, opencv, and math.
-Use with file 'SEED_Assignment2_EX0'. 
+Requires install of numpy, picamera, time, and opencv. 
 Built for Arducam OV5647.
 
-This program uses computer vision techniques to capture and manipulate images.
-The program also includes printing, detection, and orientation of aruco markers
-using built in opencv functions and transformation matrices.
+This program uses computer vision techniques and opencv to capture a stream of
+images, and performs resize, and convert to gray operations, before detecting
+Aruco Markers and the quadrant at which they appear in.
 
-See 'SEED_Assignment_Document.PDF' for more details and instructions.
+See 'README.md' for more details and instructions.
 """
 
 __author__ = "Jack Woolery"
@@ -56,7 +55,7 @@ def detect_marker(img):
                #2, cv.LINE_AA)
     
         
-    return img_marked
+    return img_marked, quad
 
 def get_quadrant(loc, img):
     quad = 0
@@ -102,7 +101,7 @@ if __name__ == '__main__':
             resize_img = cv.resize(gray_img, None, fx=scale, fy=scale,
                                    interpolation = cv.INTER_CUBIC)
 
-            img_markers = detect_marker(resize_img)
+            img_markers, quad = detect_marker(resize_img)
 
             
 

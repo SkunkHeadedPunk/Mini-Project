@@ -2,7 +2,12 @@
 Seed Lab Mini Project - Group 007
 
 _Purpose of Repository_
-
+This repository contains programs which detect the quadrant of an Aruco marker appearing on a PiCamera stream, and turns a wheel accordingly.
+The geometrical quadrants correspond to the following angles on the wheel:
+I: 0 degrees
+II: 90 degrees
+III: 180 degrees
+IV: 270 degrees
 
 
 
