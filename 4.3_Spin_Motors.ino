@@ -8,13 +8,13 @@
 
 #define motorVoltagePin9  9
 #define motorVoltagePin10 10 
-#define voltageSignPin7   7
-#define voltageSignPin8   8 
+#define voltageSignPin7   7   // Corresponds to direction for motor 1
+#define voltageSignPin8   8   // Corresponds to direction for motor 2
 #define pinD2             4
 
 int aWrite9;   // Variables for the values that are in the analogWrite command for pins 9,10
 int aWrite10;
-int desiredPulseWidth9  = 250;  // Desired pulse width for pin 9, in micro seconds 
+int desiredPulseWidth9  = 250; // Desired pulse width for pin 9, in micro seconds 
 int desiredPulseWidth10 = 250; // Desired pulse width for pin 10, in micro seconds
 
 void setup() {
@@ -34,7 +34,7 @@ void loop() {
   
   analogWrite(motorVoltagePin9,aWrite9);            // Use analogWrite to supply PWM signal of desired width  
   analogWrite(motorVoltagePin10,aWrite10);                                                  
-  digitalWrite(voltageSignPin7, 1);                 // Use pins 7/8 to set the sign of the voltage 
-  digitalWrite(voltageSignPin8, 1); 
+  digitalWrite(voltageSignPin7, 0);                 // Use pins 7/8 to set the sign of the voltage 
+  digitalWrite(voltageSignPin8, 0); 
                                                     
 }
