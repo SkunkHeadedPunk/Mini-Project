@@ -3,7 +3,7 @@
 // rotary encoders. The rotary encoder needs to be connected to the Arduino as follows:
 //        + ---> 5V
 //        GND -> GND
-//        CLK -> 4          // CLK corresponds to encoder output B, the clk is specific to one model of encoder
+//        CLK -> 5          // CLK corresponds to encoder output B, the clk is specific to one model of encoder
 //        DT --> 2          // DT corresponds to encoder output A, the DT is specific to one model of encoder
 // The framework for this code was taken from the "Example" folder of the provided library, containing 
 // an efficient method for reading encoders. This framework was modified to include calculations for 
@@ -17,7 +17,7 @@
 //   Best Performance: both pins have interrupt capability
 //   Good Performance: only the first pin has interrupt capability
 //   Low Performance:  neither pin has interrupt capability
-Encoder myEnc(2, 4);
+Encoder myEnc(2, 5);
 //   avoid using pins with LEDs attached
 
 float angularPosition;
