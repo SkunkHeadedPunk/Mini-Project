@@ -3,8 +3,8 @@
 // rotary encoders. The rotary encoder needs to be connected to the Arduino as follows:
 //        + ---> 5V
 //        GND -> GND
-//        CLK -> 4
-//        DT --> 2
+//        CLK -> 4          // CLK corresponds to encoder output B, the clk is specific to one model of encoder
+//        DT --> 2          // DT corresponds to encoder output A, the DT is specific to one model of encoder
 // The framework for this code was taken from the "Example" folder of the provided library, containing 
 // an efficient method for reading encoders. This framework was modified to include calculations for 
 // determining the angular position of the wheel based on counts as well as resetting the angular 
