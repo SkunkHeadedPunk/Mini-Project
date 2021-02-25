@@ -23,6 +23,8 @@ import numpy as np
 import smbus
 
 bus = smbus.SMBus(1)
+# Initialise I2C bus.
+i2c = busio.I2C(board.SCL, board.SDA)
 
 address = 0x04
 
