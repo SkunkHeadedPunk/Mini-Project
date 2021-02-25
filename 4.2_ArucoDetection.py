@@ -20,6 +20,11 @@ import picamera
 import time
 import cv2 as cv
 import numpy as np
+import smbus
+
+bus = smbus.SMBus(1)
+
+address = 0x04
 
 def detect_marker(img):
     loc = []
@@ -82,6 +87,14 @@ def get_quadrant(loc, img):
     print("Quadrant: ", quad)
 
     return quad, img
+
+def writeNumber(value):
+    bus.write_byte(address, value)
+    return -1
+
+def readNumber():
+    number = bus.read_byte_data(address)
+    return number
 
 if __name__ == '__main__':
     camera = PiCamera()
