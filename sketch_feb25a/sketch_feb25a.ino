@@ -41,6 +41,7 @@ float radPerCount;
 #define voltageSignPin7   7   // Corresponds to direction for motor 1
 #define voltageSignPin8   8   // Corresponds to direction for motor 2
 #define pinD2             4
+#define ADDRESS           0x04
 
 int aWrite9;   // Variables for the values that are in the analogWrite command for pins 9,10
 int aWrite10;
@@ -50,7 +51,8 @@ int desiredPulseWidth10 = 500; // Desired pulse width for pin 10, in micro secon
 //
 
 /////////////////////
-float locationtogo = (3.14159/2); //fixme to call location go to pi/2 now
+int incomingQuad = 0;
+float locationtogo = incomingQuad * (3.14159/2); //fixme to call location go to pi/2 now
 
 float Kp = 0.645; //
 float Ki = 0.0001;//0.41;
@@ -61,7 +63,7 @@ int delayValue = 30;
 int I = 0;
 int e_past = 0;
 int Ts = 0;
-int Tc = millis(); //FIXME6966969696969696969696969699696969696969696969
+int Tc = millis(); 
 //below here is location variables
 float r = locationtogo; //FIXME                                                         this is the location we want it to go to .      boom
 float y = angularPosition;
@@ -69,7 +71,13 @@ float y = angularPosition;
 
 
 
+
 void setup() {
+  
+  // define callbacks for i2c communication
+  Wire.begin(ADDRESS);
+  Wire.onReceive(receiveData);
+  
   // put your setup code here, to run once:
   pinMode (pinD2, OUTPUT);
   pinMode (voltageSignPin7, OUTPUT);
@@ -158,8 +166,15 @@ u = Kp*e + Ki*I;
 //Serial.println(u);
 //aWrite9 = aWrite9*u;
 
- //Serial.println(u);
+//Serial.println(u);
 Ts = millis()-Tc; //FIXME
 Tc = millis(); //FIXME
 delay(delayValue - Ts);                                           
+}
+
+//Callback for received data
+void receiveData(int byteCount) {
+  while (Wire.available()) {
+    incomingQuad = Wire.read();
+  }
 }
