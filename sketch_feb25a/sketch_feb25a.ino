@@ -24,6 +24,7 @@
 
 //_________________________________________________________________________________________________ 
 #include <Encoder.h>
+#include <Wire.h>
 #define countsPerRotation 3200    // Per the datasheet for the motor
 
 // Change these two numbers to the pins connected to your encoder.
