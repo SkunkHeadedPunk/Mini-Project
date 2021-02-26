@@ -59,6 +59,7 @@ def detect_marker(img):
         
     return img_marked, quad
 
+
 def get_quadrant(loc, img):
     quad = 0
     cx = img.shape[1] / 2
@@ -85,6 +86,7 @@ def get_quadrant(loc, img):
 
     return quad, img
 
+
 if __name__ == '__main__':
     camera = PiCamera()
     x = input("Enter the number of seconds you'd like to take photos for: ")
@@ -108,6 +110,8 @@ if __name__ == '__main__':
             
 
             cv.imshow("Markers Stream", img_markers)
+            # CHANGE THIS WAITKEY VALUE TO CHANGE
+            # THE REFRESH RATE OF THE IMAGES
             cv.waitKey(100)
             cv.destroyWindow("Markers, stream")
             # Truncate the output to clear for next image capture
