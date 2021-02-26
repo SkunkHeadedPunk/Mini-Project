@@ -1,9 +1,16 @@
-This file contains instructions from Jack for using git on the command line on Jack's SD card in the Raspberry Pi.
-Git is how you should use GitHub repositories on Raspberry Pi. It's different than on PC.
-I've put this here to save you a little time in Google, although this stuff is not too difficult to find. I have it written down myself, for reference anyways.
+This file contains instructions from Jack for using git on the command line 
+on Jack's SD card in the Raspberry Pi.
+Git is how you should use GitHub repositories on Raspberry Pi. 
+It's different than on PC.
+I've put this here to save you a little time in Google, 
+although this stuff is not too difficult to find. 
+I have it written down myself, for reference anyways.
 Notes are contained in brackets - [ ]
-If you put all these lines in the command line in order, you will successfully update the shared repository.
-If you are updating more than one file at a time... I haven't personally tried that yet. Either google it, or just try one at a time?
+If you put all these lines in the command line in order, 
+you will successfully update the shared repository.
+If you are updating more than one file at a time... 
+I haven't personally tried that yet. Either google it, 
+or just try one at a time?
 
 
 
