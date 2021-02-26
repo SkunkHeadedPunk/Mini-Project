@@ -106,8 +106,10 @@ if __name__ == '__main__':
             
 
             cv.imshow("Markers Stream", img_markers)
-            cv.waitKey(500)
+            cv.waitKey(100)
             cv.destroyWindow("Markers, stream")
             # Truncate the output to clear for next image capture
             output.truncate(0)
+
+    cv.destroyAllWindows()
 
