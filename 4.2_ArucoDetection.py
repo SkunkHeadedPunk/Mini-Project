@@ -10,7 +10,7 @@ Aruco Markers and the quadrant at which they appear in.
 
 See 'README.md' for more details and instructions.
 If you make changes to this file, make sure to update the shared repo;
-you may use the instructions included in "raspi_git_instructions.txt"
+you may use the instructions included in "raspi_git_instructions.txt".
 """
 
 __author__ = "Jack Woolery"
