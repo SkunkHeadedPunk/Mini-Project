@@ -95,6 +95,7 @@ if __name__ == '__main__':
     t_minus_x_seconds = time.time() + x
 
     with picamera.array.PiRGBArray(camera) as output:
+        camera.resolution = (1920, 1088)
         while time.time() < t_minus_x_seconds:
             camera.capture(output, format="bgr")
             img = output.array
