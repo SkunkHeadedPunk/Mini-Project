@@ -24,7 +24,7 @@ import cv2 as cv
 import numpy as np
 
 camera = PiCamera(resolution=(960, 544))
-   
+
 
 def detect_marker(img):
     loc = []
@@ -96,34 +96,28 @@ if __name__ == '__main__':
     x = int(x)
     t_minus_x_seconds = time.time() + x
 
-    with picamera.array.PiRGBArray(camera) as output:
-        camera.shutter_speed = camera.exposure_speed
-        camera.exposure_mode = 'off'
-        g = camera.awb_gains
-        camera.awb_mode = 'off'
-        camera.awb_gains = g
-    
+    camera.shutter_speed = camera.exposure_speed
+    camera.exposure_mode = 'off'
+    g = camera.awb_gains
+    camera.awb_mode = 'off'
+    camera.awb_gains = g
+
+    with picamera.array.PiRGBArray(camera) as stream:
         while time.time() < t_minus_x_seconds:
-            camera.capture(output, format="bgr")
-            img = output.array
+            camera.capture(stream, format="bgr")
+            img = stream.array
 
             gray_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-            #scale = 0.5
-            #resize_img = cv.resize(gray_img, None, fx=scale, fy=scale,
-                                   #interpolation = cv.INTER_CUBIC)
-
             img_markers, quad = detect_marker(gray_img)
-
-            
 
             cv.imshow("Markers Stream", img_markers)
             # CHANGE THIS WAITKEY VALUE TO CHANGE
             # THE REFRESH RATE OF THE IMAGES
-            cv.waitKey(50)
+            cv.waitKey(2)
             cv.destroyWindow("Markers, stream")
-            # Truncate the output to clear for next image capture
-            output.truncate(0)
+            # Truncate the stream to clear for next image capture
+            stream.truncate(0)
 
     cv.destroyAllWindows()
 
