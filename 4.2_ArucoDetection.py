@@ -23,6 +23,9 @@ import time
 import cv2 as cv
 import numpy as np
 
+camera = PiCamera(resolution=(960, 544))
+   
+
 def detect_marker(img):
     loc = []
     arucoDict = cv.aruco.getPredefinedDictionary(cv.aruco.DICT_4X4_100)
@@ -88,32 +91,36 @@ def get_quadrant(loc, img):
 
 
 if __name__ == '__main__':
-    camera = PiCamera()
     x = input("Enter the number of seconds you'd like to take photos for: ")
     # Change user input to int to set time for capture stream
     x = int(x)
     t_minus_x_seconds = time.time() + x
 
     with picamera.array.PiRGBArray(camera) as output:
-        camera.resolution = (1920, 1088)
+        camera.shutter_speed = camera.exposure_speed
+        camera.exposure_mode = 'off'
+        g = camera.awb_gains
+        camera.awb_mode = 'off'
+        camera.awb_gains = g
+    
         while time.time() < t_minus_x_seconds:
             camera.capture(output, format="bgr")
             img = output.array
 
             gray_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-            scale = 0.5
-            resize_img = cv.resize(gray_img, None, fx=scale, fy=scale,
-                                   interpolation = cv.INTER_CUBIC)
+            #scale = 0.5
+            #resize_img = cv.resize(gray_img, None, fx=scale, fy=scale,
+                                   #interpolation = cv.INTER_CUBIC)
 
-            img_markers, quad = detect_marker(resize_img)
+            img_markers, quad = detect_marker(gray_img)
 
             
 
             cv.imshow("Markers Stream", img_markers)
             # CHANGE THIS WAITKEY VALUE TO CHANGE
             # THE REFRESH RATE OF THE IMAGES
-            cv.waitKey(100)
+            cv.waitKey(50)
             cv.destroyWindow("Markers, stream")
             # Truncate the output to clear for next image capture
             output.truncate(0)
