@@ -84,7 +84,7 @@ def get_quadrant(loc, img):
     if x >= cx and y >= cy:
         quad = "4"
 
-    cv.putText(img, quad, (0, 25), cv.FONT_HERSHEY_SIMPLEX, 1, 255, 2)
+    cv.putText(img, quad, (0, 50), cv.FONT_HERSHEY_SIMPLEX, 2, 255, 4)
     print("Quadrant: ", quad)
 
     return quad, img
@@ -112,8 +112,6 @@ if __name__ == '__main__':
             img_markers, quad = detect_marker(gray_img)
 
             cv.imshow("Markers Stream", img_markers)
-            # CHANGE THIS WAITKEY VALUE TO CHANGE
-            # THE REFRESH RATE OF THE IMAGES
             cv.waitKey(2)
             cv.destroyWindow("Markers, stream")
             # Truncate the stream to clear for next image capture
