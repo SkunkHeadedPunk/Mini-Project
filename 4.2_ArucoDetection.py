@@ -9,6 +9,8 @@ images, and performs resize, and convert to gray operations, before detecting
 Aruco Markers and the quadrant at which they appear in.
 
 See 'README.md' for more details and instructions.
+If you make changes to this file, make sure to update the shared repo;
+you may use the instructions included in "raspi_git_instructions.txt"
 """
 
 __author__ = "Jack Woolery"
@@ -23,10 +25,13 @@ import numpy as np
 import smbus
 
 bus = smbus.SMBus(1)
-# Initialise I2C bus.
+#Initialise I2C bus.
 i2c = busio.I2C(board.SCL, board.SDA)
 
 address = 0x04
+
+camera = PiCamera(resolution=(960, 544))
+
 
 def detect_marker(img):
     loc = []
@@ -64,6 +69,7 @@ def detect_marker(img):
         
     return img_marked, quad
 
+
 def get_quadrant(loc, img):
     quad = 0
     cx = img.shape[1] / 2
@@ -85,10 +91,11 @@ def get_quadrant(loc, img):
     if x >= cx and y >= cy:
         quad = "4"
 
-    cv.putText(img, quad, (0, 25), cv.FONT_HERSHEY_SIMPLEX, 1, 255, 2)
+    cv.putText(img, quad, (0, 50), cv.FONT_HERSHEY_SIMPLEX, 2, 255, 4)
     print("Quadrant: ", quad)
 
     return quad, img
+
 
 def writeNumber(value):
     bus.write_byte(address, value)
@@ -98,31 +105,34 @@ def readNumber():
     number = bus.read_byte_data(address)
     return number
 
+
+
 if __name__ == '__main__':
-    camera = PiCamera()
     x = input("Enter the number of seconds you'd like to take photos for: ")
     # Change user input to int to set time for capture stream
     x = int(x)
     t_minus_x_seconds = time.time() + x
 
-    with picamera.array.PiRGBArray(camera) as output:
+    camera.shutter_speed = camera.exposure_speed
+    camera.exposure_mode = 'off'
+    g = camera.awb_gains
+    camera.awb_mode = 'off'
+    camera.awb_gains = g
+
+    with picamera.array.PiRGBArray(camera) as stream:
         while time.time() < t_minus_x_seconds:
-            camera.capture(output, format="bgr")
-            img = output.array
+            camera.capture(stream, format="bgr")
+            img = stream.array
 
             gray_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-            scale = 0.5
-            resize_img = cv.resize(gray_img, None, fx=scale, fy=scale,
-                                   interpolation = cv.INTER_CUBIC)
-
-            img_markers, quad = detect_marker(resize_img)
-
-            
+            img_markers, quad = detect_marker(gray_img)
 
             cv.imshow("Markers Stream", img_markers)
-            cv.waitKey(500)
+            cv.waitKey(2)
             cv.destroyWindow("Markers, stream")
-            # Truncate the output to clear for next image capture
-            output.truncate(0)
+            # Truncate the stream to clear for next image capture
+            stream.truncate(0)
+
+    cv.destroyAllWindows()
 

@@ -1,0 +1,66 @@
+This file contains instructions from Jack for using git on the command line 
+on Jack's SD card in the Raspberry Pi.
+Git is how you should use GitHub repositories on Raspberry Pi. 
+It's different than on PC.
+I've put this here to save you a little time in Google 
+although this stuff is not too difficult to find. 
+I have it written down myself, for reference anyways.
+Notes are contained in brackets - [ ]
+If you put all these lines in the command line in order, 
+you will successfully update the shared repository.
+
+IF YOU ARE CHANGING A FILE THAT OTHERS COMMONLY MESS WITH:
+Make sure you pull before you make changes, even to your own local document.
+If there are changes to a file which haven't been pulled on a file that you're also editing,
+it'll make more than a mess trying to merge them or overwrite something;
+so let's try to avoid that altogether to prevent complication.
+Feel free to contact Jack if you run into this problem and need some help.
+
+
+
+[GET TO THE PROJECT DIRECTORY / local repository]
+[This file path is different if you're on a different system, depending on where you put it]
+[I know there is one Pi somewhere where the project directory is accessed at...    cd ~/seed/Mini-Project"]
+
+cd ~/Mini-Project
+
+
+
+
+[PULL any changes to the repository]
+
+git pull origin
+
+
+
+
+[ADD / UPDATE a file you've changed in the repository]
+[This is how you select what you're going to commit to the repository]
+[If you are adding / updating more than one file, simply put a space between the two files]
+
+git add filename.extension 
+
+
+
+
+[COMMIT your changes to the GitHub repository or something]
+[Make sure you add a comment, or the next page is messy]
+
+git commit -m "add your comment here in the quotation marks"
+
+
+
+
+[PUSH your commit to the shared repository]
+
+git push origin
+
+
+
+
+[SIGN IN to your GitHub next, when prompted]
+[Put in your username, hit enter...]
+[When it asks for your password, it will not show that you're typing, but you are!]
+[Type in your password anyways and hit enter.]
+[If this doesn't work, hit up Jack if you don't feel like Googling;]
+[I'm trying to save y'all time and streamline what I can.]
