@@ -1,8 +1,12 @@
-// Thomas Klinedinst      EENG 350      2 24 2021
+// Jeffrey Hostetter      EENG 350      2 27 2021
+//
 // This program contains an integration of the code for section 4.3 (spinning the motor) and 
-// 4.6 (reading the rotary encoder and converting to radians). The following are the descriptions
-// of each section of the program. The program is roughly divided based on horizontal lines in the 
-// code. 
+// 4.6 (reading the rotary encoder and converting to radians), as well as the control system for the wheel's position. 
+// The following are the descriptions of each section of the program. The program is roughly divided based 
+// on horizontal lines in the code. 
+
+// The first portion of the code corresponds to the control system, which is a PI control system. 
+// This can be modified to be a PID system, but the accuracy is sufficient without this step. 
 
 // Program 4.3 is designed to spin motors using an Arduino with a Pololu motor driver shield. 
 // This program contains a conversion from the pulse width of a PWM signal to the analog value
@@ -23,7 +27,7 @@
 // 
 
 //_________________________________________________________________________________________________ 
-#include <Encoder.h>
+#include <Encoder.h>              // Encoder library, must be included in Arduino sketch
 #include <Wire.h>
 #define countsPerRotation 3200    // Per the datasheet for the motor
 
@@ -68,7 +72,7 @@ int e_past = 0;
 int Ts = 0;
 int Tc = millis(); 
 //below here is location variables
-float r = locationtogo; //FIXME                                                         this is the location we want it to go to .      boom
+float r = locationtogo; //                                                         this is the location we want it to go to .      
 float y = angularPosition;
 
 
