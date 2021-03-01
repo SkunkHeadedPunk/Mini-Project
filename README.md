@@ -20,7 +20,11 @@ Files are organized by task point numbers as defined in MiniProject.handout.pdf,
 
 4.4_readRotaryEncoderRads.ino: Arduino program for reading the rotary encoder's angular position, using the library from the .zip folder.  
 
-4.3_4.4_CombinedSpinAndRead: Arduino program integrating programs 4.3 and 4.4, used to spin the motor and read its current angular position to the serial monitor. 
+4.3_4.4_CombinedSpinAndRead: Arduino program integrating programs 4.3 and 4.4, used to spin the motor and read its current angular position to the serial monitor.
+ 
+4.6 ControllerMatlab.html. This is the matlab file that contains the simulated PI controller 
+
+4.7 sketch_feb25b.ino This is the final code to run the arduino with the encoader PID controller and motor controller
 
 Encoder-1.4.1.zip: Arduino Library containing an accurate way to read encoders. Including this library is necessary to properly read the rotary   encoders using the Arduino.   
 
