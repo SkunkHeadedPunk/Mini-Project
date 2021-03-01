@@ -29,3 +29,7 @@ Files are organized by task point numbers as defined in MiniProject.handout.pdf,
 Encoder-1.4.1.zip: Arduino Library containing an accurate way to read encoders. Including this library is necessary to properly read the rotary   encoders using the Arduino.   
 
 Arduino Motor Driver Shield Datasheet: Datasheet and user guide for the Pololu Dual MC33926 Motor Driver Shield used to control motors using the Arduino.
+
+FinalArduinoCode.ino: Final implementation of the motor control. Takes a quadrant value from the Pi and moves the motor to the desired location.
+
+FinalPiCode.py: Final implementation of Pi code. Uses computer vision techniques to determine a quadrant location of the Aruco marker, then sends the quadrant value to the Arduino.
