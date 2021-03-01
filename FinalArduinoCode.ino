@@ -196,5 +196,5 @@ void receiveData(int byteCount) {
 
 //Callback for sending data
 void sendData() {
-  Wire.write(int(angularPosition*2*3.1415));
+  Wire.write(int(180*angularPosition/3.1415));
 }
