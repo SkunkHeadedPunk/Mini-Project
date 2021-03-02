@@ -24,6 +24,7 @@ Files are organized by task point numbers as defined in MiniProject.handout.pdf,
  
 4.6 ModelDevelopment.html This is the matlab file that contains the simulated PI and real model of the controller with an open and closed loop system
 
+parameters.m This runs the simulink file and has all the properly nemed parameters with units
 
 4.7 sketch_feb25b.ino This is the final code to run the arduino with the encoader PID controller and motor controller
 
