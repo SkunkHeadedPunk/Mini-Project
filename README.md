@@ -32,6 +32,8 @@ Arduino Motor Driver Shield Datasheet: Datasheet and user guide for the Pololu D
 
 FinalArduinoCode.ino: Final implementation of the motor control. Takes a quadrant value from the Pi and moves the motor to the desired location.
 
-FinalPiCode.py: Final implementation of Pi code. Uses computer vision techniques to determine a quadrant location of the Aruco marker, then sends the quadrant value to the Arduino.
+FinalPiCode.py: Final implementation of Pi code. Uses computer vision techniques to determine a quadrant location of the Aruco marker, then sends the quadrant value to the Arduino. 
 
-marker_0.png: The Aruco marker detected by the computer vision module to allow the user to tell the wheel which position to spin to. 
+take_picture.py: Python SHIFT file for testing basic camera functionality.
+
+marker_0.png: Image of Aruco marker 0 for reprint purposes
