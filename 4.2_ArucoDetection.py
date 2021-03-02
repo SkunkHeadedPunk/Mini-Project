@@ -23,6 +23,8 @@ import time
 import cv2 as cv
 import numpy as np
 import smbus
+import busio
+import board
 
 bus = smbus.SMBus(1)
 # Initialize I2C bus
