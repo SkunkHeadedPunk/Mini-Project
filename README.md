@@ -22,7 +22,8 @@ Files are organized by task point numbers as defined in MiniProject.handout.pdf,
 
 4.3_4.4_CombinedSpinAndRead: Arduino program integrating programs 4.3 and 4.4, used to spin the motor and read its current angular position to the serial monitor.
  
-4.6 ControllerMatlab.html. This is the matlab file that contains the simulated PI controller 
+4.6 ModelDevelopment.html This is the matlab file that contains the simulated PI and real model of the controller with an open and closed loop system
+
 
 4.7 sketch_feb25b.ino This is the final code to run the arduino with the encoader PID controller and motor controller
 
