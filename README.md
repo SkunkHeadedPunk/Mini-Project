@@ -40,4 +40,6 @@ FinalPiCode.py: Final implementation of Pi code. Uses computer vision techniques
 
 take_picture.py: Python SHIFT file for testing basic camera functionality.
 
-marker_0.png: Image of Aruco marker 0 for reprint purposes
+marker_0.png: Image of Aruco marker 0 for reprint purposes 
+
+motorsimulation.slx: This is the Simulink block diagram used to model the final control system. 
