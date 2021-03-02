@@ -1,4 +1,4 @@
-// Thomas Klinedinst      EENG 350      2 24 2021
+// Logan Meyer      EENG 350      2 25 2021
 // This program contains an integration of the code for section 4.3 (spinning the motor) and 
 // 4.6 (reading the rotary encoder and converting to radians). The following are the descriptions
 // of each section of the program. The program is roughly divided based on horizontal lines in the 
