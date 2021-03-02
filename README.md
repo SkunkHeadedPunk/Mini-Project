@@ -14,7 +14,7 @@ IV: 270 degrees
 _File Organization_
 Files are organized by task point numbers as defined in MiniProject.handout.pdf, and named with a short description of their purpose.
 
-4.2_ArucoDetection: Python SHIFT file implementing Aruco marker (and it's respective quadrant) location
+4.2_ArucoDetection: Python SHIFT file implementing Aruco marker (and it's respective quadrant) location, also includes (but does not implement) functions to write/read to/from Arduino.
 
 4.3_Spin_Motors.ino: Arduino program for spinning motors using the Pololu motor driver shield and PWM signals. 
 
