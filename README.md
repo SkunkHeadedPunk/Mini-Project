@@ -26,6 +26,8 @@ Files are organized by task point numbers as defined in MiniProject.handout.pdf,
 
 parameters.m This runs the simulink file and has all the properly nemed parameters with units
 
+motorsimulation.slx This is the simulink model of the final motor this. The labels are in the parameters.m file above. This was done on purpose as to make it easier to change labels.
+
 4.7 sketch_feb25b.ino This is the final code to run the arduino with the encoader PID controller and motor controller
 
 Encoder-1.4.1.zip: Arduino Library containing an accurate way to read encoders. Including this library is necessary to properly read the rotary   encoders using the Arduino.   
