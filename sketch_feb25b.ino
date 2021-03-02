@@ -1,8 +1,8 @@
 // Logan Meyer      EENG 350      2 25 2021
 // This program contains an integration of the code for section 4.3 (spinning the motor) and 
-// 4.6 (reading the rotary encoder and converting to radians). The following are the descriptions
-// of each section of the program. The program is roughly divided based on horizontal lines in the 
-// code. 
+// 4.6 (reading the rotary encoder and converting to radians), as well as the control 
+// systems. The following are the descriptions of each section of the program. 
+// The program is roughly divided based on horizontal lines in the code. 
 
 // Program 4.3 is designed to spin motors using an Arduino with a Pololu motor driver shield. 
 // This program contains a conversion from the pulse width of a PWM signal to the analog value
@@ -19,7 +19,11 @@
 // The framework for this code was taken from the "Example" folder of the provided library, containing 
 // an efficient method for reading encoders. This framework was modified to include calculations for 
 // determining the angular position of the wheel based on counts as well as resetting the angular 
-// position. 
+// position.  
+
+// The control system shown here uses a PI controller in order to control and adjust the position of the
+// wheel based on the inputs of the desired angular position from the Raspberry pi and the current
+// position from the localization modules. 
 // 
 
 //_________________________________________________________________________________________________ 
@@ -43,8 +47,8 @@ int sign = 1;
 #define motorVoltagePin10 10 
 #define voltageSignPin7   7   // Corresponds to direction for motor 1
 #define voltageSignPin8   8   // Corresponds to direction for motor 2
-#define pinD2             4
-#define ADDRESS           0x04
+#define pinD2             4   
+#define ADDRESS           0x04    
 
 int aWrite9;   // Variables for the values that are in the analogWrite command for pins 9,10
 int aWrite10;
@@ -57,8 +61,8 @@ int desiredPulseWidth10 = 800; // Desired pulse width for pin 10, in micro secon
 int incomingQuad = 0;
 float locationtogo = 0; //fixme to call location go to pi/2 now
 
-float Kp = 0.64; //
-float Ki = 0.001;
+float Kp = 0.64;  // Unitless quanitity (proportional)
+float Ki = 0.001; // Unit: Volts/ Second
 //int Kd = 0; // not needed but may
 //float Step = 7;
 int delayValue = 30;
